@@ -1,0 +1,28 @@
+<div>
+  <div>
+    <%= link_to "home", root_path %>
+    <%= link_to "01_chat", messages_path %>
+  </div>
+  <div class="mb-4">
+    <h1 class="text-3xl font-bold">チャットルーム一覧</h1>
+    <ul>
+      <% @rooms.each do |room| %>
+        <li><%= link_to room.name, chat_room_path(room) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h2 class="text-xl font-bold">新しいチャットルームを作成</h2>
+  <%= form_with(model: @room, class: "contents") do |form| %>
+    <div class="my-5">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full border-gray-400 focus:outline-blue-600" %>
+    </div>
+
+    <div class="inline">
+      <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+</div>
+
+
