@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # mount ActionCable.server => "/cable"
-  resources :messages
+  get "messages/:topic" => "messages#index"
+  # resources :messages
   root "messages#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,7 +1,7 @@
 class MessageChannel < ApplicationCable::Channel
   # クライアントがサーバーに接続したとき
   def subscribed
-    stream_from "general"
+    stream_from params[:topic]
   end
 
   # 接続が解除されたとき
@@ -11,7 +11,7 @@ class MessageChannel < ApplicationCable::Channel
 
   # メッセージを登録 & generalストリームにブロードキャスト
   def send_message(data)
-    ActionCable.server.broadcast "general", { name: data["name"], body: data["body"] }
-    Message.create topic: "general", name: data["name"], body: data["body"]
+    ActionCable.server.broadcast data["topic"], { name: data["name"], body: data["body"] }
+    Message.create topic: data["topic"], name: data["name"], body: data["body"]
   end
 end
