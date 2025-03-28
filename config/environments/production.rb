@@ -41,7 +41,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = "wss://example.com/cable"
+  config.action_cable.url = "wss://runteq62-yy03-action-cable.onrender.com/cable"
   config.action_cable.allowed_request_origins = [ "https://runteq62-yy03-action-cable.onrender.com" ]
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
